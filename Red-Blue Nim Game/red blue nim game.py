@@ -10,7 +10,7 @@ class RedBlueNimGame:
         self.reset_game()
 
     def create_widgets(self):
-        self.title_label = ctk.CTkLabel(self.root, text="Red-Blue Nim Game", font=("Arial", 24))
+        self.title_label = ctk.CTkLabel(self.root, text="Red-Blue Nim GameV", font=("Arial", 24))
         self.title_label.place(x=100, y=10)
 
         self.red_label = ctk.CTkLabel(self.root, text="Red Marbles: ", font=("Arial", 14))
