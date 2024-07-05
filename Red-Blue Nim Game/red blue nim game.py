@@ -11,54 +11,54 @@ class RedBlueNimGame:
 
     def create_widgets(self):
         self.title_label = ctk.CTkLabel(self.root, text="Red-Blue Nim Game", font=("Arial", 24))
-        self.title_label.grid(row=0, column=0, columnspan=4, pady=10)
+        self.title_label.place(x=100, y=10)
 
         self.red_label = ctk.CTkLabel(self.root, text="Red Marbles: ", font=("Arial", 14))
-        self.red_label.grid(row=1, column=0, pady=5, sticky='e')
+        self.red_label.place(x=20, y=60)
         self.red_count = ctk.CTkLabel(self.root, text="0", font=("Arial", 14))
-        self.red_count.grid(row=1, column=1, pady=5, sticky='w')
+        self.red_count.place(x=160, y=60)
 
         self.blue_label = ctk.CTkLabel(self.root, text="Blue Marbles: ", font=("Arial", 14))
-        self.blue_label.grid(row=2, column=0, pady=5, sticky='e')
+        self.blue_label.place(x=20, y=100)
         self.blue_count = ctk.CTkLabel(self.root, text="0", font=("Arial", 14))
-        self.blue_count.grid(row=2, column=1, pady=5, sticky='w')
+        self.blue_count.place(x=160, y=100)
 
         self.score_label = ctk.CTkLabel(self.root, text="Scores: ", font=("Arial", 14))
-        self.score_label.grid(row=3, column=0, pady=5, sticky='e')
+        self.score_label.place(x=20, y=140)
         self.score_value = ctk.CTkLabel(self.root, text="Human: 0, Computer: 0", font=("Arial", 14))
-        self.score_value.grid(row=3, column=1, pady=5, sticky='w')
+        self.score_value.place(x=160, y=140)
 
         self.message_label = ctk.CTkLabel(self.root, text="", font=("Arial", 14), wraplength=300)
-        self.message_label.grid(row=4, column=0, columnspan=4, pady=10)
+        self.message_label.place(x=20, y=180)
 
         self.red_move_label = ctk.CTkLabel(self.root, text="Red Marbles to remove: ", font=("Arial", 14))
-        self.red_move_label.grid(row=5, column=0, pady=5, sticky='e')
+        self.red_move_label.place(x=20, y=220)
         self.red_move = ctk.CTkEntry(self.root, width=50)
-        self.red_move.grid(row=5, column=1, pady=5, sticky='w')
+        self.red_move.place(x=210, y=220)
 
         self.blue_move_label = ctk.CTkLabel(self.root, text="Blue Marbles to remove: ", font=("Arial", 14))
-        self.blue_move_label.grid(row=6, column=0, pady=5, sticky='e')
+        self.blue_move_label.place(x=20, y=260)
         self.blue_move = ctk.CTkEntry(self.root, width=50)
-        self.blue_move.grid(row=6, column=1, pady=5, sticky='w')
+        self.blue_move.place(x=210, y=260)
 
         self.submit_move_button = ctk.CTkButton(self.root, text="Submit Move", command=self.human_move)
-        self.submit_move_button.grid(row=7, column=0, columnspan=2, pady=10)
+        self.submit_move_button.place(x=100, y=300)
 
         self.version_label = ctk.CTkLabel(self.root, text="Game Version: ", font=("Arial", 14))
-        self.version_label.grid(row=1, column=2, pady=5, sticky='e')
+        self.version_label.place(x=280, y=60)
         self.version_var = ctk.StringVar(value="standard")
         self.version_menu = ctk.CTkOptionMenu(self.root, values=["standard", "misere"], variable=self.version_var)
-        self.version_menu.grid(row=1, column=3, pady=5, sticky='w')
+        self.version_menu.place(x=400, y=60)
 
         self.first_player_label = ctk.CTkLabel(self.root, text="First Player: ", font=("Arial", 14))
-        self.first_player_label.grid(row=2, column=2, pady=5, sticky='e')
+        self.first_player_label.place(x=280, y=100)
         self.first_player_var = ctk.StringVar(value="computer")
         self.first_player_menu = ctk.CTkOptionMenu(self.root, values=["computer", "human"],
                                                    variable=self.first_player_var)
-        self.first_player_menu.grid(row=2, column=3, pady=5, sticky='w')
+        self.first_player_menu.place(x=400, y=100)
 
         self.start_button = ctk.CTkButton(self.root, text="Start Game", command=self.start_game)
-        self.start_button.grid(row=3, column=2, columnspan=2, pady=10)
+        self.start_button.place(x=300, y=140)
 
     def reset_game(self):
         self.red_marbles = 10
@@ -121,4 +121,5 @@ class RedBlueNimGame:
 if __name__ == "__main__":
     root = ctk.CTk()
     game = RedBlueNimGame(root)
+    root.geometry("550x400")
     root.mainloop()
