@@ -5,60 +5,83 @@ from tkinter import messagebox
 class RedBlueNimGame:
     def __init__(self, root):
         self.root = root
-        self.root.title("Red-Blue Nim Game")
+        self.root.title("RED BLUE NIM GAME              MUHAMMAD UWAIM QURESHI")
         self.create_widgets()
         self.reset_game()
 
     def create_widgets(self):
-        self.title_label = ctk.CTkLabel(self.root, text="Red-Blue Nim Game", font=("Arial", 24))
-        self.title_label.place(x=100, y=10)
+        # lable for developer name
+        self.lable_developer_name = ctk.CTkLabel(self.root,text="DEVELOPER: MUHAMMAD UWAIM QURESHI",font=("Arial",15))
+        self.lable_developer_name.place(relx=0.8, rely=0.9, anchor="center")
 
-        self.red_label = ctk.CTkLabel(self.root, text="Red Marbles: ", font=("Arial", 14))
-        self.red_label.place(x=20, y=60)
-        self.red_count = ctk.CTkLabel(self.root, text="0", font=("Arial", 14))
-        self.red_count.place(x=160, y=60)
+        # lable for game name (blue red nim game)
+        self.title_label = ctk.CTkLabel(self.root, text="RED BLUE NIM GAME", font=("Arial", 80))
+        self.title_label.place(relx=0.5, rely=0.1, anchor="center")
 
-        self.blue_label = ctk.CTkLabel(self.root, text="Blue Marbles: ", font=("Arial", 14))
-        self.blue_label.place(x=20, y=100)
-        self.blue_count = ctk.CTkLabel(self.root, text="0", font=("Arial", 14))
-        self.blue_count.place(x=160, y=100)
+        # red marbles
+        self.red_label = ctk.CTkLabel(self.root, text="RED MARBLES: ", font=("Arial", 25))
+        self.red_label.place(relx=0.2, rely=0.4, anchor="center")
+        self.red_count = ctk.CTkLabel(self.root, text="0", font=("Arial", 25))
+        self.red_count.place(relx=0.3, rely=0.4, anchor="center")
 
-        self.score_label = ctk.CTkLabel(self.root, text="Scores: ", font=("Arial", 14))
-        self.score_label.place(x=20, y=140)
-        self.score_value = ctk.CTkLabel(self.root, text="Human: 0, Computer: 0", font=("Arial", 14))
-        self.score_value.place(x=160, y=140)
+        # blue marbles
+        self.blue_label = ctk.CTkLabel(self.root, text="BLUE MARBLES: ", font=("Arial", 25))
+        self.blue_label.place(relx=0.5, rely=0.4, anchor="center")
+        self.blue_count = ctk.CTkLabel(self.root, text="0", font=("Arial", 25))
+        self.blue_count.place(relx=0.6, rely=0.4, anchor="center")
 
-        self.message_label = ctk.CTkLabel(self.root, text="", font=("Arial", 14), wraplength=300)
-        self.message_label.place(x=20, y=180)
+        # lable for score
+        self.score_label = ctk.CTkLabel(self.root, text="SCORES: ", font=("Arial", 25))
+        self.score_label.place(relx=0.3, rely=0.5, anchor="center")
+        self.score_value = ctk.CTkLabel(self.root, text="HUMAN: 0, COMPUTER: 0", font=("Arial", 25))
+        self.score_value.place(relx=0.44, rely=0.5, anchor="center")
 
-        self.red_move_label = ctk.CTkLabel(self.root, text="Red Marbles to remove: ", font=("Arial", 14))
-        self.red_move_label.place(x=20, y=220)
-        self.red_move = ctk.CTkEntry(self.root, width=50)
-        self.red_move.place(x=210, y=220)
+        # lable for showing computer starts or human starts when user select on a player drop down
+        self.message_label = ctk.CTkLabel(self.root, text="", font=("Arial", 30), wraplength=300)
+        self.message_label.place(relx=0.8, rely=0.5, anchor="center")
 
-        self.blue_move_label = ctk.CTkLabel(self.root, text="Blue Marbles to remove: ", font=("Arial", 14))
-        self.blue_move_label.place(x=20, y=260)
-        self.blue_move = ctk.CTkEntry(self.root, width=50)
-        self.blue_move.place(x=210, y=260)
+        # lable for red marble removing
+        self.red_move_label = ctk.CTkLabel(self.root, text="RED MARBLES TO REMOVE: ", font=("Arial", 25))
+        self.red_move_label.place(relx=0.2, rely=0.6, anchor="center")
+        self.red_move = ctk.CTkEntry(self.root, width=100, height=50, corner_radius=30, placeholder_text="",
+                                     font=("Arial", 30))
+        self.red_move.place(relx=0.4, rely=0.6, anchor="center")
 
-        self.submit_move_button = ctk.CTkButton(self.root, text="Submit Move", command=self.human_move)
-        self.submit_move_button.place(x=100, y=300)
+        # lable for blue marble removing
+        self.blue_move_label = ctk.CTkLabel(self.root, text="BLUE MARBLES TO REMOVE: ", font=("Arial", 25))
+        self.blue_move_label.place(relx=0.2, rely=0.7, anchor="center")
+        self.blue_move = ctk.CTkEntry(self.root, width=100, height=50, corner_radius=30, placeholder_text="",
+                                      font=("Arial", 30))
+        self.blue_move.place(relx=0.4, rely=0.7, anchor="center")
 
-        self.version_label = ctk.CTkLabel(self.root, text="Game Version: ", font=("Arial", 14))
-        self.version_label.place(x=280, y=60)
-        self.version_var = ctk.StringVar(value="standard")
-        self.version_menu = ctk.CTkOptionMenu(self.root, values=["standard", "misere"], variable=self.version_var)
-        self.version_menu.place(x=400, y=60)
+        # button for submission of moves
+        self.submit_move_button = ctk.CTkButton(self.root, text="SUBMIT MOVES", command=self.human_move, width=400,
+                                                height=70, font=("Arial", 30), corner_radius=30, fg_color="#000000",
+                                                hover_color="#8B0000", border_width=2)
+        self.submit_move_button.place(relx=0.4, rely=0.8, anchor="center")
 
-        self.first_player_label = ctk.CTkLabel(self.root, text="First Player: ", font=("Arial", 14))
-        self.first_player_label.place(x=280, y=100)
-        self.first_player_var = ctk.StringVar(value="computer")
-        self.first_player_menu = ctk.CTkOptionMenu(self.root, values=["computer", "human"],
-                                                   variable=self.first_player_var)
-        self.first_player_menu.place(x=400, y=100)
+        # game version drop down option
+        self.version_label = ctk.CTkLabel(self.root, text="GAME VERSION: ", font=("Arial", 25))
+        self.version_label.place(relx=0.55, rely=0.3, anchor="center")
+        self.version_var = ctk.StringVar(value="STANDARD")
+        self.version_menu = ctk.CTkOptionMenu(self.root, values=["STANDARD", "MISERE"], variable=self.version_var,
+                                              width=250, height=50, corner_radius=25, font=("Arial", 25))
+        self.version_menu.place(relx=0.77, rely=0.3, anchor="center")
 
-        self.start_button = ctk.CTkButton(self.root, text="Start Game", command=self.start_game)
-        self.start_button.place(x=300, y=140)
+        # player drop down option
+        self.first_player_label = ctk.CTkLabel(self.root, text="FIRST PLAYER: ", font=("Arial", 25))
+        self.first_player_label.place(relx=0.11, rely=0.3, anchor="center")
+        self.first_player_var = ctk.StringVar(value="COMPUTER")
+        self.first_player_menu = ctk.CTkOptionMenu(self.root, values=["COMPUTER", "HUMAN"],
+                                                   variable=self.first_player_var, width=250, height=50,
+                                                   corner_radius=25, font=("Arial", 25))
+        self.first_player_menu.place(relx=0.33, rely=0.3, anchor="center")
+
+        # button for start game
+        self.start_button = ctk.CTkButton(self.root, text="START GAME", command=self.start_game, width=200, height=200,
+                                          corner_radius=30, font=("Arial", 30), fg_color="#000000",
+                                          hover_color="#8B0000", border_width=2)
+        self.start_button.place(relx=0.8, rely=0.7, anchor="center")
 
     def reset_game(self):
         self.red_marbles = 10
@@ -121,5 +144,5 @@ class RedBlueNimGame:
 if __name__ == "__main__":
     root = ctk.CTk()
     game = RedBlueNimGame(root)
-    root.geometry("550x400")
+    root.geometry("1366x768")
     root.mainloop()
