@@ -30,11 +30,6 @@ Run the application:
 
 python web_scraper.py
 
-Run the application:
-
-bash
-Copy code
-python web_scraper.py
 Input the URL and CSS selector:
 
 Enter the URL of the webpage you want to scrape in the URL field.
@@ -55,6 +50,9 @@ Prompts the user to choose a location to save the CSV file.
 Saves the extracted data to the CSV file.
 GUI Elements:
 
-Labels: url_label, lable (title), selector_label
+Labels: url_label, lable (title), selector_label, developer_name_lable
 Entry Widgets: url_entry, selector_entry
 Button: scrape_button
+
+Developer
+Developed by MUHAMMAD UWAIM QURESHI
