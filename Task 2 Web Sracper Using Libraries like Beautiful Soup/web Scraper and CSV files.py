@@ -47,7 +47,7 @@ def scrape_and_save():
 
 # Create main window
 root = ctk.CTk()
-root.title("Web Scraper")
+root.title("Web Scraper       MUHAMMAD UWAIM QURESHI")
 
 # Create and place labels and entry widgets for URL and CSS selector
 url_label = ctk.CTkLabel(master=root, text="URL:", font=("Arial", 25))
@@ -72,6 +72,10 @@ scrape_button = ctk.CTkButton(master=root, text="Save as", command=scrape_and_sa
                               corner_radius=32, font=("Arial", 30), border_width=3, border_color="#FFFFFF",
                               fg_color="#008000", hover_color="#228B22")
 scrape_button.place(relx=0.5, rely=0.77, anchor="center")
+
+# LABLE FOR DEVELOPER NAME
+developer_name_lable = ctk.CTkLabel(master=root,text="Developer Name: MUHAMMAD UWAIM QURESHI")
+developer_name_lable.place(relx=0.5, rely=0.9, anchor="center")
 
 root.geometry("1366x768")
 root.mainloop()
