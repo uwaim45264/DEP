@@ -15,6 +15,7 @@ migrate = Migrate(app, db)
 api = Api(app)
 jwt = JWTManager(app)
 
+
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
@@ -26,10 +27,12 @@ class User(db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
+
 class Item(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), nullable=False)
     description = db.Column(db.String(200))
+
 
 user_parser = reqparse.RequestParser()
 user_parser.add_argument('username', type=str, required=True, help='Username is required')
@@ -38,6 +41,7 @@ user_parser.add_argument('password', type=str, required=True, help='Password is 
 item_parser = reqparse.RequestParser()
 item_parser.add_argument('name', type=str, required=True, help='Name is required')
 item_parser.add_argument('description', type=str)
+
 
 class UserRegister(Resource):
     def post(self):
@@ -51,6 +55,7 @@ class UserRegister(Resource):
         db.session.commit()
         return {'message': 'User created successfully'}, 201
 
+
 class UserLogin(Resource):
     def post(self):
         data = user_parser.parse_args()
@@ -59,6 +64,7 @@ class UserLogin(Resource):
             access_token = create_access_token(identity=user.id)
             return {'access_token': access_token}, 200
         return {'message': 'Invalid credentials'}, 401
+
 
 class ItemResource(Resource):
     @jwt_required()
@@ -73,6 +79,7 @@ class ItemResource(Resource):
         db.session.commit()
         return {'message': 'Item deleted'}, 200
 
+
 class ItemListResource(Resource):
     @jwt_required()
     def get(self):
@@ -86,6 +93,7 @@ class ItemListResource(Resource):
         db.session.add(item)
         db.session.commit()
         return {'id': item.id, 'name': item.name, 'description': item.description}, 201
+
 
 api.add_resource(UserRegister, '/register')
 api.add_resource(UserLogin, '/login')
